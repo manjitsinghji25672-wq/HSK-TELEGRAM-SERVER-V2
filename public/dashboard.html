@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HSK BRAHMASTRA Dashboard</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ==========================
+             HEADER
+        =========================== -->
+
+        <header class="header">
+
+            <div>
+
+                <h1>🚀 HSK BRAHMASTRA</h1>
+                <p>Professional Trading Dashboard</p>
+
+            </div>
+
+            <button id="logoutBtn">
+                Logout
+            </button>
+
+        </header>
+
+        <!-- ==========================
+             WELCOME
+        =========================== -->
+
+        <div class="welcome">
+
+            <h2>Welcome 👋</h2>
+
+            <p id="userEmail">
+                Loading...
+            </p>
+
+        </div>
+
+        <!-- ==========================
+             DASHBOARD CARDS
+        =========================== -->
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🟢 Server</h3>
+                <p>ONLINE</p>
+            </div>
+
+            <div class="card">
+                <h3>👥 Members</h3>
+                <p id="membersCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Active Trades</h3>
+                <p id="activeTradesCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>📉 Closed Trades</h3>
+                <p id="signalsCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Target Hit</h3>
+                <p id="targetHitsCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>🛑 Stop Loss</h3>
+                <p id="stopLossCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Win Rate</h3>
+                <p id="winRateCount">0%</p>
+            </div>
+
+            <div class="card">
+                <h3>💰 Today's P/L</h3>
+                <p id="pnlCount">₹0</p>
+            </div>
+
+    <div class="card">
+
+    <h3>⚙ System Settings</h3>
+
+    <p>
+        Auto Trading :
+        <span id="autoTradingStatus">Loading...</span>
+    </p>
+
+    <button id="autoOnBtn">🟢 ON</button>
+    <button id="autoOffBtn">🔴 OFF</button>
+
+    <hr>
+
+    <p>
+        Paper Mode :
+        <span id="paperModeStatus">Loading...</span>
+    </p>
+
+    <button id="paperOnBtn">📝 PAPER</button>
+    <button id="paperOffBtn">💹 LIVE</button>
+
+    <hr>
+
+    <p>
+        Lots :
+        <span id="lotsStatus">1</span>
+    </p>
+
+    <button id="minusLotBtn">➖</button>
+    <button id="plusLotBtn">➕</button>
+
+    <br><br>
+
+    <button id="saveSettingsBtn">
+        💾 Save Settings
+    </button>
+
+    </div>    
+
+</div>
+
+        <!-- ==========================
+             ACTIVE TRADES
+        =========================== -->
+
+        <div class="table-section">
+
+            <div class="table-header">
+
+                <h2>📊 Active Trades</h2>
+
+                <div class="table-toolbar">
+
+                    <select id="marketFilter">
+
+                        <option value="ALL">🌍 All Markets</option>
+                        <option value="NIFTY">NIFTY</option>
+                        <option value="BANKNIFTY">BANKNIFTY</option>
+                        <option value="CRUDEOIL">CRUDEOIL</option>
+                        <option value="NATURALGAS">NATURALGAS</option>
+                        <option value="BTCUSD">BTCUSD</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <table id="activeTradesTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Trade ID</th>
+                        <th>Market</th>
+                        <th>Side</th>
+                        <th>Strike</th>
+                        <th>Entry</th>
+                        <th>SL</th>
+                        <th>TG1</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="activeTradesBody">
+
+                    <tr>
+
+                        <td colspan="8">
+                            No Active Trades
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- ==========================
+             DAILY REPORT
+        =========================== -->
+
+        <div class="table-section">
+
+            <div class="table-header">
+
+                <h2>📊 Daily Report</h2>
+
+                <div class="table-toolbar">
+
+                    <select id="closedDateFilter">
+
+                        <option value="TODAY">📅 Today</option>
+                        <option value="YESTERDAY">Yesterday</option>
+                        <option value="7DAYS">Last 7 Days</option>
+                        <option value="MONTH">This Month</option>
+                        <option value="ALL">All Dates</option>
+
+                    </select>
+
+                    <select id="closedMarketFilter">
+
+                        <option value="ALL">🌍 All Markets</option>
+                        <option value="NIFTY">NIFTY</option>
+                        <option value="BANKNIFTY">BANKNIFTY</option>
+                        <option value="CRUDEOIL">CRUDEOIL</option>
+                        <option value="NATURALGAS">NATURALGAS</option>
+                        <option value="BTCUSD">BTCUSD</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+                                              <!-- ==========================
+     REPORT SUMMARY
+========================== -->
+
+<div id="reportSummaryBar" class="summary-bar">
+
+    <strong>📊 Trades:</strong>
+    <span id="reportTotalTrades">0</span>
+
+    &nbsp; | &nbsp;
+
+    <strong>🎯 Target:</strong>
+    <span id="reportTargetHits">0</span>
+
+    &nbsp; | &nbsp;
+
+    <strong>🛑 SL:</strong>
+    <span id="reportStopLoss">0</span>
+
+    &nbsp; | &nbsp;
+
+    <strong>📈 Points:</strong>
+    <span id="reportTotalPoints">0</span>
+
+</div>
+
+            <table id="closedTradesTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Trade ID</th>
+                        <th>Market</th>
+                        <th>Side</th>
+                        <th>Entry</th>
+                        <th>Points</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="closedTradesBody">
+
+                    <tr>
+
+                        <td colspan="6">
+                            No Closed Trades
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         TRADE DETAILS MODAL
+    =========================== -->
+
+    <div id="tradeModal" class="modal">
+
+        <div class="modal-content">
+
+            <span id="closeModal">&times;</span>
+
+            <h2>📊 Trade Details</h2>
+
+            <div id="tradeDetails">
+
+                Loading...
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         JAVASCRIPT
+    =========================== -->
+
+    <script src="/js/dashboard.js"></script>
+
+</body>
+
+</html>
+
+               

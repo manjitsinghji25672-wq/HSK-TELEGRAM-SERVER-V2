@@ -1,0 +1,421 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#0d1117;
+    color:#ffffff;
+}
+
+.dashboard{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    border-bottom:1px solid #30363d;
+    padding-bottom:20px;
+}
+
+.header h1{
+    font-size:34px;
+}
+
+.header p{
+    color:#8b949e;
+    margin-top:8px;
+}
+
+#logoutBtn{
+    background:#ff4d4f;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+#logoutBtn:hover{
+    background:#d9363e;
+}
+
+.welcome{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.welcome h2{
+    margin-bottom:10px;
+}
+
+.welcome p{
+    color:#8b949e;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:16px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00ff88;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#ffffff;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+    color:#00ff88;
+}
+
+/* ==========================================
+   ACTIVE TRADES TABLE
+========================================== */
+
+.table-section{
+    margin-top:40px;
+}
+
+.table-section h2{
+    margin-bottom:20px;
+    color:#ffffff;
+}
+
+#activeTradesTable{
+    width:100%;
+    border-collapse:collapse;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+#activeTradesTable thead{
+    background:#21262d;
+}
+
+#activeTradesTable th{
+    padding:14px;
+    color:#58a6ff;
+    font-size:14px;
+    text-align:center;
+    border-bottom:1px solid #30363d;
+}
+
+#activeTradesTable td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #30363d;
+    color:#ffffff;
+}
+
+#activeTradesTable tbody tr:hover{
+    background:#1f2937;
+}
+
+#activeTradesTable tbody tr:last-child td{
+    border-bottom:none;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .table-section{
+        overflow-x:auto;
+    }
+
+    #activeTradesTable{
+        min-width:900px;
+    }
+
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.table-toolbar{
+    display:flex;
+    gap:10px;
+}
+
+#marketFilter{
+    background:#161b22;
+    color:#fff;
+    border:1px solid #30363d;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+#marketFilter:focus{
+    outline:none;
+    border-color:#238636;
+}
+
+/* ==========================
+   TRADE DETAILS MODAL
+========================== */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 9999;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0,0,0,0.7);
+
+    backdrop-filter: blur(4px);
+
+}
+
+.modal-content {
+
+    background: #1b2028;
+
+    width: 450px;
+
+    max-width: 90%;
+
+    margin: 80px auto;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    color: white;
+
+    border: 1px solid #2b3442;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:20px;
+
+}
+
+#closeModal{
+
+    float:right;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#ff5555;
+
+}
+
+#closeModal:hover{
+
+    color:white;
+
+}
+
+#tradeDetails{
+
+    line-height:2;
+
+    font-size:16px;
+
+}
+
+/* ==========================================
+   CLOSED TRADES TABLE
+========================================== */
+
+#closedTradesTable{
+    width:100%;
+    border-collapse:collapse;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+#closedTradesTable thead{
+    background:#21262d;
+}
+
+#closedTradesTable th{
+    padding:14px;
+    color:#58a6ff;
+    font-size:14px;
+    text-align:center;
+    border-bottom:1px solid #30363d;
+}
+
+#closedTradesTable td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #30363d;
+    color:#ffffff;
+}
+
+#closedTradesTable tbody tr:hover{
+    background:#1f2937;
+}
+
+#closedTradesTable tbody tr:last-child td{
+    border-bottom:none;
+}
+
+/* Closed Filters */
+
+#closedMarketFilter,
+#closedDateFilter{
+
+    background:#161b22;
+    color:#fff;
+    border:1px solid #30363d;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+
+}
+
+#closedMarketFilter:focus,
+#closedDateFilter:focus{
+
+    outline:none;
+    border-color:#238636;
+
+}
+
+/* Status Badges */
+
+.status-win{
+
+    color:#00ff88;
+    font-weight:bold;
+
+}
+
+.status-loss{
+
+    color:#ff4d4f;
+    font-weight:bold;
+
+}
+
+/* Points */
+
+.points-profit{
+
+    color:#00ff88;
+    font-weight:bold;
+
+}
+
+.points-loss{
+
+    color:#ff4d4f;
+    font-weight:bold;
+
+}
+
+.points-flat{
+
+    color:#f1c40f;
+    font-weight:bold;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    #closedTradesTable{
+        min-width:900px;
+    }
+
+}
+
+/* ==========================================
+   DAILY REPORT SUMMARY
+========================================== */
+
+.summary-bar{
+
+    margin:15px 0 20px;
+
+    padding:14px 18px;
+
+    background:#161b22;
+
+    border:1px solid #30363d;
+
+    border-radius:10px;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+}
+
+.summary-bar span{
+
+    color:#00ff88;
+
+    font-weight:bold;
+
+}
+
+@media(max-width:768px){
+
+    .summary-bar{
+
+        font-size:13px;
+
+        line-height:2;
+
+    }
+
+}
