@@ -107,7 +107,7 @@ app.get("/api/set-ip", async (req, res) => {
             "https://api.dhan.co/v2/ip/setIP",
             {
                 dhanClientId: config.CLIENT_ID,
-                ip: "74.220.48.219",
+                ip: "74.220.48.143",
                 ipFlag: "PRIMARY"
             },
             {
@@ -465,7 +465,7 @@ try {
     try {
 
         await bot.telegram.setWebhook(
-            "https://hsk-telegram-server.onrender.com/telegram"
+            "https://hsk-telegram-server-v2.onrender.com/telegram"
         );
 
         console.log("✅ Telegram Webhook Set");
