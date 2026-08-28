@@ -6,7 +6,12 @@ const { loadInstruments } = require("./optionchain/instrumentLoader");
 
 const axios = require("axios");
 const http = require("http");
+const https = require("https");
 const path = require("path");
+
+const dhanHttpsAgent = new https.Agent({
+    family: 4
+});
 const cors = require("cors");
 
 const config = require("./broker/config");
@@ -111,12 +116,14 @@ app.get("/api/set-ip", async (req, res) => {
                 ipFlag: "PRIMARY"
             },
             {
+                
+                 httpsAgent: dhanHttpsAgent,
                 headers: {
                     "access-token": config.ACCESS_TOKEN,
                     "Content-Type": "application/json",
                     "Accept": "application/json"
-                }
-            }
+    }
+}
         );
 
         res.json(response.data);
@@ -146,11 +153,12 @@ app.get("/api/check-ip", async (req, res) => {
         const response = await axios.get(
             "https://api.dhan.co/v2/ip/getIP",
             {
-                headers: {
-                    "access-token": config.ACCESS_TOKEN,
-                    "Accept": "application/json"
-                }
-            }
+                httpsAgent: dhanHttpsAgent,
+                    headers: {
+                        "access-token": config.ACCESS_TOKEN,
+                        "Accept": "application/json"
+    }
+}
         );
 
         
