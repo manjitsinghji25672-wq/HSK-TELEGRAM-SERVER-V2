@@ -84,11 +84,7 @@ app.get("/api/health", (req, res) => {
 // =====================================
 
 app.get("/status", (req, res) => {
-    res.status(200).json({
-        status: "ONLINE",
-        project: "HSK BRAHMAS​​TRA",
-        time: new Date().toISOString()
-    });
+    res.send("OK");
 });
 // ==============================
 // TEST API
